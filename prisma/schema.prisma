@@ -1,0 +1,110 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id                   String         @id @unique @default(uuid())
+  username             String         @unique
+  password             String
+  name                 String
+  createdAt            DateTime       @default(now()) @map("created_at")
+  updatedAt            DateTime       @default(now()) @updatedAt @map("updated_at")
+  profilesCreated      Profile[]      @relation("ProfileCreatedBy")
+  profilesUpdated      Profile[]      @relation("ProfileUpdatedBy")
+  announcementsCreated Announcement[] @relation("AnnouncementCreatedBy")
+  announcementsUpdated Announcement[] @relation("AnnouncementUpdatedBy")
+  galleriesCreated     Gallery[]      @relation("GalleryCreatedBy")
+  galleriesUpdated     Gallery[]      @relation("GalleryUpdatedBy")
+  facilitiesCreated    Facility[]     @relation("FacilityCreatedBy")
+  facilitiesUpdated    Facility[]     @relation("FacilityUpdatedBy")
+  activitiesCreated    Activity[]     @relation("ActivityCreatedBy")
+  activitiesUpdated    Activity[]     @relation("ActivityUpdatedBy")
+
+  @@map("admins")
+}
+
+model Profile {
+  id             String   @id @unique @default(uuid())
+  schoolName     String   @map("school_name")
+  address        String
+  description    String
+  accreditation  String
+  contact        String
+  history        String
+  vision         String
+  mission        String
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @default(now()) @updatedAt @map("updated_at")
+  logo           String
+  createdBy      String   @map("created_by")
+  updatedBy      String   @map("updated_by")
+  createdByAdmin Admin    @relation("ProfileCreatedBy", fields: [createdBy], references: [id])
+  updatedByAdmin Admin    @relation("ProfileUpdatedBy", fields: [updatedBy], references: [id])
+
+  @@map("profiles")
+}
+
+model Announcement {
+  id             String   @id @unique @default(uuid())
+  title          String
+  content        String
+  image          String?
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @default(now()) @updatedAt @map("updated_at")
+  createdBy      String   @map("created_by")
+  updatedBy      String   @map("updated_by")
+  createdByAdmin Admin    @relation("AnnouncementCreatedBy", fields: [createdBy], references: [id])
+  updatedByAdmin Admin    @relation("AnnouncementUpdatedBy", fields: [updatedBy], references: [id])
+
+  @@map("announcements")
+}
+
+model Gallery {
+  id             String   @id @unique @default(uuid())
+  title          String
+  image          String
+  description    String?
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @default(now()) @updatedAt @map("updated_at")
+  createdBy      String   @map("created_by")
+  updatedBy      String   @map("updated_by")
+  createdByAdmin Admin    @relation("GalleryCreatedBy", fields: [createdBy], references: [id])
+  updatedByAdmin Admin    @relation("GalleryUpdatedBy", fields: [updatedBy], references: [id])
+
+  @@map("galleries")
+}
+
+model Facility {
+  id             String   @id @unique @default(uuid())
+  name           String
+  image          String?
+  description    String?
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @default(now()) @updatedAt @map("updated_at")
+  createdBy      String   @map("created_by")
+  updatedBy      String   @map("updated_by")
+  createdByAdmin Admin    @relation("FacilityCreatedBy", fields: [createdBy], references: [id])
+  updatedByAdmin Admin    @relation("FacilityUpdatedBy", fields: [updatedBy], references: [id])
+
+  @@map("facilities")
+}
+
+model Activity {
+  id             String   @id @unique @default(uuid())
+  name           String
+  description    String?
+  image          String?
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @default(now()) @updatedAt @map("updated_at")
+  createdBy      String   @map("created_by")
+  updatedBy      String   @map("updated_by")
+  createdByAdmin Admin    @relation("ActivityCreatedBy", fields: [createdBy], references: [id])
+  updatedByAdmin Admin    @relation("ActivityUpdatedBy", fields: [updatedBy], references: [id])
+
+  @@map("activities")
+}

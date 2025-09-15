@@ -4,14 +4,22 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "postinstall": "prisma generate",
+    "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed": "bun run prisma/seed.ts"
   },
   "dependencies": {
+    "@prisma/client": "^6.9.0",
+    "bcryptjs": "^3.0.2",
+    "imagekit": "^6.0.0",
+    "jose": "^6.1.0",
+    "lucide-react": "^0.541.0",
+    "next": "15.5.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.0"
+    "use-debounce": "^10.0.4"
   },
   "devDependencies": {
     "typescript": "^5",
@@ -22,6 +30,7 @@
     "tailwindcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.5.0",
-    "@eslint/eslintrc": "^3"
+    "@eslint/eslintrc": "^3",
+    "prisma": "^6.9.0"
   }
 }
