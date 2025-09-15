@@ -17,6 +17,7 @@ import type {
   Profile,
 } from "@prisma/client";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   profile: Profile;
@@ -167,7 +168,8 @@ export const SchoolLandingPage = ({
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {announcements.map((announcement) => (
-              <div
+              <Link
+                href={`/announcements/${announcement.id}`}
                 key={announcement.id}
                 className="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group"
               >
@@ -184,7 +186,7 @@ export const SchoolLandingPage = ({
                   <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors">
                     {announcement.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed mb-4">
+                  <p className="text-gray-600 leading-relaxed mb-4 line-clamp-5">
                     {announcement.content}
                   </p>
                   <div className="flex items-center justify-between">
@@ -199,7 +201,7 @@ export const SchoolLandingPage = ({
                     />
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
