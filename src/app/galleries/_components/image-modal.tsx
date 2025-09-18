@@ -103,7 +103,7 @@ export const ImageModal = ({
             />
           </div>
 
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
+          {/* <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
             <div className="text-white">
               <h3 className="text-xl font-semibold mb-2">
                 {currentGallery.title}
@@ -124,7 +124,7 @@ export const ImageModal = ({
                 </span>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
