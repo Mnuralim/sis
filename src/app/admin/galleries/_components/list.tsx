@@ -5,12 +5,12 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { GalleryForm } from "./form";
 import { Tabel, type TabelColumn } from "../../_components/tabel";
-import { deleteFacility } from "@/actions/facility";
 import { Pagination } from "../../_components/pagination";
 import { Modal } from "../../_components/modal";
 import { Alert } from "../../_components/alert";
 import Image from "next/image";
 import type { Gallery } from "@prisma/client";
+import { deleteGallery } from "@/actions/gallery";
 
 interface Props {
   alertType?: "success" | "error";
@@ -87,7 +87,7 @@ export const GalleryList = ({
           >
             <Edit className="w-4 h-4" />
           </button>
-          <form action={() => deleteFacility(item.id)}>
+          <form action={() => deleteGallery(item.id)}>
             <button
               type="submit"
               onClick={(e) => {
@@ -95,6 +95,7 @@ export const GalleryList = ({
                 confirm(
                   `Apakah Anda yakin ingin menghapus departemen "${item.title}"?`
                 );
+                e.currentTarget.form?.requestSubmit();
               }}
               className="w-8 h-8 inline-flex items-center justify-center rounded-md bg-red-500 text-white hover:bg-red-600 text-sm"
             >

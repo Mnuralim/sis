@@ -90,6 +90,13 @@ export const FacilitiesList = ({
           </button>
           <form action={() => deleteFacility(item.id)}>
             <button
+              onClick={(e) => {
+                e.preventDefault();
+                confirm(
+                  `Apakah Anda yakin ingin menghapus fasilitas "${item.name}"?`
+                );
+                e.currentTarget.form?.requestSubmit();
+              }}
               type="submit"
               className="w-8 h-8 inline-flex items-center justify-center rounded-md bg-red-500 text-white hover:bg-red-600 text-sm"
             >

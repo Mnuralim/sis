@@ -96,6 +96,7 @@ export const ActivitiesList = ({
                 confirm(
                   `Apakah Anda yakin ingin menghapus departemen "${item.name}"?`
                 );
+                e.currentTarget.form?.requestSubmit();
               }}
               className="w-8 h-8 inline-flex items-center justify-center rounded-md bg-red-500 text-white hover:bg-red-600 text-sm"
             >
