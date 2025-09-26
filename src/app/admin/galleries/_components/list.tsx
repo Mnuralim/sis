@@ -90,7 +90,7 @@ export const GalleryList = ({
               onClick={(e) => {
                 e.preventDefault();
                 confirm(
-                  `Apakah Anda yakin ingin menghapus departemen "${item.title}"?`
+                  `Apakah Anda yakin ingin menghapus galeri "${item.title}"?`
                 );
                 e.currentTarget.form?.requestSubmit();
               }}

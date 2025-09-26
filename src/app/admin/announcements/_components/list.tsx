@@ -5,12 +5,12 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { AnnouncementForm } from "./form";
 import { Tabel, type TabelColumn } from "../../_components/tabel";
-import { deleteFacility } from "@/actions/facility";
 import { Pagination } from "../../_components/pagination";
 import { Modal } from "../../_components/modal";
 import { Alert } from "../../_components/alert";
 import Image from "next/image";
 import type { Announcement } from "@prisma/client";
+import { deleteAnnouncement } from "@/actions/announcement";
 
 interface Props {
   alertType?: "success" | "error";
@@ -87,13 +87,13 @@ export const AnnouncementList = ({
           >
             <Edit className="w-4 h-4" />
           </button>
-          <form action={() => deleteFacility(item.id)}>
+          <form action={() => deleteAnnouncement(item.id)}>
             <button
               type="submit"
               onClick={(e) => {
                 e.preventDefault();
                 confirm(
-                  `Apakah Anda yakin ingin menghapus departemen "${item.title}"?`
+                  `Apakah Anda yakin ingin menghapus pengumuman "${item.title}"?`
                 );
                 e.currentTarget.form?.requestSubmit();
               }}
