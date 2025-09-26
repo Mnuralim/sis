@@ -198,7 +198,7 @@ export async function deleteAnnouncement(id: string) {
       );
     }
 
-    await prisma.activity.delete({
+    await prisma.announcement.delete({
       where: {
         id,
       },
