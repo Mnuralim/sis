@@ -21,7 +21,7 @@ export const ActivityCard = ({ activity, isListView = false }: Props) => (
       <div className="w-full h-full bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center">
         <Image
           alt={activity.name}
-          src={activity.image || "/placeholder-activity.png"}
+          src={activity.image || "/plh.png"}
           width={640}
           height={480}
           className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"

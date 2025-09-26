@@ -91,7 +91,7 @@ export const AnnouncementList = ({ announcements }: Props) => {
                   <Image
                     width={640 * 4}
                     height={360 * 4}
-                    src={latestAnnouncement.image}
+                    src={latestAnnouncement.image || "/plh.png"}
                     alt={latestAnnouncement.title}
                     className="w-full h-full object-cover"
                   />

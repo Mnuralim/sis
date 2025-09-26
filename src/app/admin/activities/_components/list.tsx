@@ -5,12 +5,12 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ActivityForm } from "./form";
 import { Tabel, type TabelColumn } from "../../_components/tabel";
-import { deleteFacility } from "@/actions/facility";
 import { Pagination } from "../../_components/pagination";
 import { Modal } from "../../_components/modal";
 import { Alert } from "../../_components/alert";
 import Image from "next/image";
 import type { Activity } from "@prisma/client";
+import { deleteActivity } from "@/actions/activity";
 
 interface Props {
   alertType?: "success" | "error";
@@ -64,7 +64,7 @@ export const ActivitiesList = ({
           <Image
             width={640}
             height={640}
-            src={item.image}
+            src={item.image || "/plh.png"}
             alt={item.name || "Image"}
             className="object-contain rounded-md w-32 h-32"
           />
@@ -88,7 +88,7 @@ export const ActivitiesList = ({
           >
             <Edit className="w-4 h-4" />
           </button>
-          <form action={() => deleteFacility(item.id)}>
+          <form action={() => deleteActivity(item.id)}>
             <button
               type="submit"
               onClick={(e) => {

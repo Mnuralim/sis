@@ -21,7 +21,7 @@ export const FacilityCard = ({ facility, isListView = false }: Props) => (
       <div className="w-full h-full bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center">
         <Image
           alt={facility.name}
-          src={facility.image || "/placeholder-image.png"}
+          src={facility.image || "/plh.png"}
           width={640}
           height={480}
           className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"

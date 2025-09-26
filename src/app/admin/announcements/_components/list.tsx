@@ -67,7 +67,7 @@ export const AnnouncementList = ({
           <Image
             width={640}
             height={640}
-            src={item.image}
+            src={item.image || "/plh.png"}
             alt={item.title || "Image"}
             className="object-contain rounded-md w-32 h-32"
           />

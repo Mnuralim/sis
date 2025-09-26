@@ -75,7 +75,7 @@ export const FooterItem = ({ profile }: Props) => {
             <div className="space-y-2 text-gray-400">
               <p>{profile.address}</p>
               <p>{profile.contact}</p>
-              <p>info@sman1kendari.sch.id</p>
+              <p>info@sdnmwsk2.sch.id</p>
             </div>
           </div>
         </div>

@@ -176,7 +176,7 @@ export const SchoolLandingPage = ({
                 <div className="p-6">
                   <div className="text-4xl mb-4">
                     <Image
-                      src={announcement.image!}
+                      src={announcement.image || "/plh.png"}
                       alt={announcement.title}
                       width={500}
                       height={500}
@@ -228,7 +228,7 @@ export const SchoolLandingPage = ({
                 <div className="p-6">
                   <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">
                     <Image
-                      src={facility.image!}
+                      src={facility.image || "/plh.png"}
                       alt={facility.name}
                       width={500}
                       height={500}
@@ -266,7 +266,7 @@ export const SchoolLandingPage = ({
                 <div className="p-6">
                   <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">
                     <Image
-                      src={activity.image!}
+                      src={activity.image || "/plh.png"}
                       alt={activity.name}
                       width={500}
                       height={500}

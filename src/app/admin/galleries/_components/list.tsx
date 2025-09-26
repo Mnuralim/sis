@@ -54,18 +54,15 @@ export const GalleryList = ({
     {
       header: "Gambar",
       accessor: (item) => item.image || "-",
-      render: (item) =>
-        item.image ? (
-          <Image
-            width={640}
-            height={640}
-            src={item.image}
-            alt={item.title || "Image"}
-            className="object-contain rounded-md w-32 h-32"
-          />
-        ) : (
-          "-"
-        ),
+      render: (item) => (
+        <Image
+          width={640}
+          height={640}
+          src={item.image || "/plh.png"}
+          alt={item.title || "Image"}
+          className="object-contain rounded-md w-32 h-32"
+        />
+      ),
     },
     {
       header: "Judul Galeri",
